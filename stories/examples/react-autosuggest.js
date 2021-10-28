@@ -4,9 +4,9 @@ import PropTypes from 'prop-types'
 import Autosuggest from 'react-autosuggest'
 import match from 'autosuggest-highlight/match'
 import parse from 'autosuggest-highlight/parse'
-import Paper from '@material-ui/core/Paper'
-import MenuItem from '@material-ui/core/MenuItem'
-import { withStyles } from '@material-ui/core/styles'
+import Paper from '@mui/material/Paper'
+import MenuItem from '@mui/material/MenuItem'
+import { withStyles } from '@mui/styles'
 import ChipInput from '../../src/ChipInput'
 
 const suggestions = [
@@ -43,7 +43,9 @@ const suggestions = [
   { name: 'Bouvet Island' },
   { name: 'Brazil' },
   { name: 'British Indian Ocean Territory' },
-  { name: 'Brunei Darussalam' }
+  { name: 'Brunei Darussalam' },
+  { name: 'United States'},
+  { name: 'United Kingdom'}
 ]
 
 function renderInput (inputProps) {
@@ -72,15 +74,17 @@ function renderSuggestion (suggestion, { query, isHighlighted }) {
     >
       <div>
         {parts.map((part, index) => {
-          return part.highlight ? (
-            <span key={String(index)} style={{ fontWeight: 500 }}>
-              {part.text}
-            </span>
-          ) : (
-            <span key={String(index)}>
-              {part.text}
-            </span>
-          )
+          return part.highlight
+            ? (
+              <span key={String(index)} style={{ fontWeight: 500 }}>
+                {part.text}
+              </span>
+              )
+            : (
+              <span key={String(index)}>
+                {part.text}
+              </span>
+              )
         })}
       </div>
     </MenuItem>
@@ -240,14 +244,15 @@ class ReactAutosuggestRemote extends React.Component {
   };
 
   handleSuggestionsFetchRequested = ({ value }) => {
-    var oReq = new XMLHttpRequest()
-    var that = this
+    const oReq = new XMLHttpRequest()
+    const that = this
     oReq.addEventListener('load', function () {
       that.setState({
         suggestions: oReq.status === 200 ? JSON.parse(this.responseText) : []
       })
     })
-    oReq.open('GET', 'https://restcountries.eu/rest/v2/name/' + value)
+    oReq.open('GET', 'https://restcountries.com/v2/name/' + value + '?fields=name')
+    
     oReq.send()
   };
 

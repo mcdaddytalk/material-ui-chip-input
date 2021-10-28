@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { FormControlProps } from '@material-ui/core/FormControl';
-import { FormHelperTextProps } from '@material-ui/core/FormHelperText';
-import { InputProps as StandardInputProps } from '@material-ui/core/Input';
-import { FilledInputProps } from '@material-ui/core/FilledInput';
-import { OutlinedInputProps } from '@material-ui/core/OutlinedInput';
-import { InputLabelProps } from '@material-ui/core/InputLabel';
+import { FormControlProps } from '@mui/material/FormControl';
+import { FormHelperTextProps } from '@mui/material/FormHelperText';
+import { InputProps as StandardInputProps } from '@mui/material/Input';
+import { FilledInputProps } from '@mui/material/FilledInput';
+import { OutlinedInputProps } from '@mui/material/OutlinedInput';
+import { InputLabelProps } from '@mui/material/InputLabel';
 
 export interface ChipRendererArgs {
   value: string;

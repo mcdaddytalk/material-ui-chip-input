@@ -32,20 +32,22 @@ class ControlledChipInput extends React.Component {
   }
 
   render () {
-    return <ChipInput
-      {...this.props}
-      value={this.state.chips}
-      onBeforeAdd={(chip) => this.onBeforeAdd(chip)}
-      onAdd={(chip) => this.handleAdd(chip)}
-      onDelete={(deletedChip) => this.handleDelete(deletedChip)}
-      onBlur={(event) => {
-        if (this.props.addOnBlur && event.target.value) {
-          this.handleAdd(event.target.value)
-        }
-      }}
-      fullWidth
-      label='Some chips with at least three characters'
-    />
+    return (
+      <ChipInput
+        {...this.props}
+        value={this.state.chips}
+        onBeforeAdd={(chip) => this.onBeforeAdd(chip)}
+        onAdd={(chip) => this.handleAdd(chip)}
+        onDelete={(deletedChip) => this.handleDelete(deletedChip)}
+        onBlur={(event) => {
+          if (this.props.addOnBlur && event.target.value) {
+            this.handleAdd(event.target.value)
+          }
+        }}
+        fullWidth
+        label='Some chips with at least three characters'
+      />
+    )
   }
 }
 

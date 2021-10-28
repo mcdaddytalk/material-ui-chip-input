@@ -1,7 +1,7 @@
 /* eslint-env jest */
 import React from 'react'
 import { mount } from 'enzyme'
-import Chip from '@material-ui/core/Chip'
+import { Chip } from '@mui/material'
 import ChipInput from './ChipInput'
 
 /*
@@ -585,7 +585,8 @@ describe('keys', () => {
   it('calls onKeyDown prop', () => {
     let keyPressed = null
     const tree = mount(
-      <ChipInput value={['a', 'b']}
+      <ChipInput
+        value={['a', 'b']}
         onKeyDown={(e) => {
           keyPressed = e.keyCode
         }}
@@ -603,7 +604,8 @@ describe('keys', () => {
   it('calls onKeyUp prop', () => {
     let keyPressed = null
     const tree = mount(
-      <ChipInput value={['a', 'b']}
+      <ChipInput
+        value={['a', 'b']}
         onKeyUp={(e) => {
           keyPressed = e.keyCode
         }}
@@ -621,7 +623,8 @@ describe('keys', () => {
   it('calls onKeyPress prop', () => {
     let keyPressed = null
     const tree = mount(
-      <ChipInput value={['a', 'b']}
+      <ChipInput
+        value={['a', 'b']}
         onKeyPress={(e) => {
           keyPressed = e.keyCode
         }}
@@ -648,7 +651,8 @@ describe('keys', () => {
     const tree = mount(
       <ChipInput
         onKeyDown={handleKeyDown}
-        newChipKeyCodes={null} /> // This will raise an exception if the code reaches that part
+        newChipKeyCodes={null}
+      /> // This will raise an exception if the code reaches that part
     )
     const input = tree.find('input')
 
